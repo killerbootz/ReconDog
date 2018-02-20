@@ -20,6 +20,7 @@ def menu():
     print "\033[97m8. Link Grabber\033[1;m"
     print "\033[97m9. IP Location Finder\033[1;m"
     print "\033[97m10. Traceroute\033[1;m"
+    print "\033[97m11. Exit\033[1;m"
 def dog():
     try:
         choice = input('\033[1;91mEnter your choice:\033[1;m ')
@@ -68,7 +69,7 @@ def dog():
             dog()
         if choice == 6:
             ip = raw_input('\033[1;91mEnter IP Address: \033[1;m')
-            honey = "https://api.shodan.io/labs/honeyscore/" + ip + "?key=C23OXE0bVMrul2YeqcL7zxb6jZ4pj2by"
+            honey = "https://api.shodan.io/labs/honeyscore/" + ip + "?key=YOURKEYHERE"
             phoney = urlopen(honey).read()
             if '0.0' in phoney:
                 print "\033[1;32mHoneypot Probabilty: 0%\033[1;m"
@@ -130,14 +131,16 @@ def dog():
             print (ptrace)
             menu()
             dog()
+        if choice == 11:
+            print "Good Bye!"
+            exit()
         else:
             print "\033[1;31m[-] Invalid option!\033[1;m"
-            menu()
-            dog()
-    except:
+            exit()
+    except StandardError:
         print "\033[1;31m[-] Something went wrong!\033[1;m"
-        menu()
-        dog()
+        exit()
 banner()
 menu()
 dog()
+
